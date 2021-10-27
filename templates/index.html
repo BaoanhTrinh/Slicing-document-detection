@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Demo</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,400i|Roboto:500" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'style.css') }}">
+    <script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script>
+    <style>
+        .flex-container {
+          display: flex;
+        
+        }
+
+        .flex-container > div {
+          
+          margin: 10px;
+          padding: 20px;
+          font-size: 30px;
+        }
+    </style>
+</head>
+<body class="is-boxed has-animations">
+    <div class="body-wrap boxed-container">
+        <header class="site-header">
+            <div class="container">
+                <div class="site-header-inner">
+                    <div class>
+                        <p class="m-0">
+                                <a href="/" style="margin-left: 30px;">Home</a>
+                                <a href="/references" style="margin-left: 30px;">More Information</a>
+                             
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <section class="hero text-center">
+                <div class="container-sm">
+                    <div class="hero-inner">
+                        <h1 class="hero-title h2-mobile mt-0 is-revealing">FRAUD DOCUMENTS DETECTION</h1>
+                        <div class="hero-form newsletter-form field field-grouped is-revealing">
+                            <div class="control"  style="margin-left: 10%;" >
+                                <hr>
+                                <h1>File Upload</h1>
+                                <hr>
+                                    <form method="POST" action="" enctype="multipart/form-data">
+                                        <p><input type="file" name="file"></p>
+                                        <p><input type="submit" value="Predict"></p>
+                                      
+                                    </form>
+                            </div>
+                        </div>
+                        <div class="hero-browser">
+                            <div class="bubble-3 is-revealing">
+                                <svg width="427" height="286" viewBox="0 0 427 286" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                    <defs>
+                                        <path d="M213.5 286C331.413 286 427 190.413 427 72.5S304.221 16.45 186.309 16.45C68.396 16.45 0-45.414 0 72.5S95.587 286 213.5 286z" id="bubble-3-a"/>
+                                    </defs>
+                                    <g fill="none" fill-rule="evenodd">
+                                        <mask id="bubble-3-b" fill="#fff">
+                                            <use xlink:href="#bubble-3-a"/>
+                                        </mask>
+                                        <use fill="#4E8FF8" xlink:href="#bubble-3-a"/>
+                                        <path d="M64.5 129.77c117.913 0 213.5-95.588 213.5-213.5 0-117.914-122.779-56.052-240.691-56.052C-80.604-139.782-149-201.644-149-83.73c0 117.913 95.587 213.5 213.5 213.5z" fill="#1274ED" mask="url(#bubble-3-b)"/>
+                                        <path d="M381.5 501.77c117.913 0 213.5-95.588 213.5-213.5 0-117.914-122.779-56.052-240.691-56.052C236.396 232.218 168 170.356 168 288.27c0 117.913 95.587 213.5 213.5 213.5z" fill="#75ABF3" mask="url(#bubble-3-b)"/>
+                                    </g>
+                                </svg>
+                            </div>
+                            <div class="bubble-4 is-revealing">
+                                <svg width="230" height="235" viewBox="0 0 230 235" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                    <defs>
+                                        <path d="M196.605 234.11C256.252 234.11 216 167.646 216 108 216 48.353 167.647 0 108 0S0 48.353 0 108s136.959 126.11 196.605 126.11z" id="bubble-4-a"/>
+                                    </defs>
+                                    <g fill="none" fill-rule="evenodd">
+                                        <mask id="bubble-4-b" fill="#fff">
+                                            <use xlink:href="#bubble-4-a"/>
+                                        </mask>
+                                        <use fill="#7CE8DD" xlink:href="#bubble-4-a"/>
+                                        <circle fill="#3BDDCC" mask="url(#bubble-4-b)" cx="30" cy="108" r="108"/>
+                                        <circle fill="#B1F1EA" opacity=".7" mask="url(#bubble-4-b)" cx="265" cy="88" r="108"/>
+                                    </g>
+                                </svg>
+                            </div>
+                            <div class="hero-browser-inner is-revealing" >
+                                <div class="flex-container">
+
+                                  <div> 
+                                        {% if file != 'non' %}
+                                        <img src="{{ url_for('static', filename=file) }}" style="width: 300px"> 
+                                        {% else %}
+                                        <img src="{{ url_for('static', filename='images.png') }}" style="width: 300px">
+                                        {% endif %}
+                               
+                                  </div>
+                                  <div>
+                                      <span style="text-align: left;">
+                                        <p>Result</p>
+                                        <h6>True Label:{{true_label}}</h6>
+                                        <h6>Predict Label: {{predicted_label}}</h6>
+                                        <h6>Reference time: {{reference_time}}</h6>
+                                    </span>
+                                  </div>
+                                </div>
+                            </div>
+                            <hr>
+                         
+                            
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="site-footer text-light">
+            <div class="container">
+                <div class="site-footer-inner">
+                    <div class="footer-copyright" style="margin-left: 70px">&copy; Le Quy Don University, 236 Hoang Quoc Viet, Tu Liem, Ha Noi</div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename = 'main.min.js') }}"></script>
+</body>
+</html>
